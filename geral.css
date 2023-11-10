@@ -1,0 +1,27 @@
+
+    @media(min-width:766px) {   
+        .navbar-nav {
+            visibility: hidden;
+        }
+    } 
+
+    @media(max-width:766px) {   
+        .menu {
+            display: none;
+        }
+    } 
+
+    .menu {
+        height: 100vh;
+        background-color: rgb(216, 213, 210);
+        list-style: none;
+        text-decoration: none;
+    }
+    .item{
+        list-style: none;
+        color: black;
+    }
+    .contant {
+        
+        height: 500px;
+    }
