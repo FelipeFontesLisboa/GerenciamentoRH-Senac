@@ -9,19 +9,24 @@
         .menu {
             display: none;
         }
+        .row{
+            height: 100vh;
+        }
     } 
-
-    .menu {
+    body{
+        width: 100vw;
         height: 100vh;
+    }
+ .menu {
+    height: 100vh;
         background-color: rgb(216, 213, 210);
         list-style: none;
         text-decoration: none;
-    }
-    .item{
-        list-style: none;
-        color: black;
-    }
+ }
+ .ul {
+    list-style: none;
+ }
+
     .contant {
-        
         height: 500px;
     }
