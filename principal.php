@@ -1,5 +1,8 @@
 <?php
+//conexao com banco
 include 'conect.php';
+//validaçao do sistema
+include 'validacao.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +26,7 @@ include 'conect.php';
   <body >
     
     <?php include 'nav.php' ?>
+    
     
     
     <div class="container-fluid p-0 m-0 ">
