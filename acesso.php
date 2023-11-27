@@ -9,18 +9,17 @@ include("conect.php");
 $cpf = $_REQUEST["cpf"];
 $senha = $_REQUEST ["senha"];
 
-//selecione todos  usuario adim onde coresponde cpf e senha  SQL
+//selecione todos  usuario admin onde coresponde cpf e senha  SQL
 $sql = "SELECT * FROM usuario_admin WHERE cpf = '$cpf' AND senha = '$senha' " ;
 
-
+//resultaado da consulta com o banco verificando o cadastro
 $resultado = mysqli_query($conect, $sql);
 
 
 //cada valor resultados é associado ao nome da coluna no banco
 $linha = mysqli_fetch_assoc($resultado);
 
-if(mysqli_num_rows($resultado) > 0 ){
-    session_start(); // iniciar a sessão 
+if(mysqli_num_rows($resultado) > 0 ){session_start(); // iniciar a sessão 
     //cria variaveis de sessao
     $_SESSION["usuario_admin"] = $linha["nome"];
     $_SESSION["cpf"] = $cpf;
@@ -33,13 +32,12 @@ if(mysqli_num_rows($resultado) > 0 ){
     //caso contratri senha e login incoreto deslogar o usuario destroi e manda para pagina de login 
     session_unset();
     session_destroy();
-    header("location: login.html"); 
+    header("location: login.html");
 
-    
+
     alert("Hello World");
-    
     function alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
+        echo "<script type='text/javascript'>alert('$msg');</script>";
     }
     
 }

@@ -2,7 +2,7 @@
   
     <div class="container-fluid">
   
-      <a class="navbar-brand   data-bs-placement=top  " href="principal.php"><i class="bi bi-file-person-fill m-1 p-1"></i>Gerenciamento RH</a>
+      <a class="navbar-brand   data-bs-placement=top  " href="principal.php"><i class="bi bi-file-person-fill m-1 p-1"></i>Gerenciamento RH <h6>Bem Vindo. <?php echo $_SESSION ['usuario_admin'] ?></h6> </a>
   
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,6 @@
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
   
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-      
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Opções
@@ -21,10 +20,10 @@
               <li><a class="dropdown-item" href="funcao.php">Função</a></li>
               <li><a class="dropdown-item" href="funcionario.php">Funcionario</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="sair.php">Logout</a></li>
+              
             </ul>
           </li>
-  
         </ul>
   
         <form class="d-flex" role="search">

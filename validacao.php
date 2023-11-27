@@ -1,8 +1,9 @@
 <?php
 //VALIDAÇAO PARA MANTER O LOGIN ATIVO NA SESSOES DA PAGINA 
 
-//inicia ela e depois avalia
+//inicia a sessao  avalia 
 session_start();
+
 //se nao estiver logado mnanda para o login
 //se nao existir variavel de sessao de cpf OU senha
 if(!isset($_SESSION["cpf"])  or !isset($_SESSION["senha"])) {
@@ -12,7 +13,7 @@ if(!isset($_SESSION["cpf"])  or !isset($_SESSION["senha"])) {
     unset($_SESSION["cpf"]);
     unset($_SESSION["senha"]);
 
-    //e manda para a tela inicial
+    //e manda para a tela inicial login
     header("location:login.html");
 }
 ?>
