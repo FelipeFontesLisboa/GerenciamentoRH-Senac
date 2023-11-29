@@ -1,0 +1,35 @@
+plugin : utilizado na tabela  
+para busca ordenação , paginação 
+
+
+importa o jquery depois o plugin que usa ele 
+
+inport j query 
+1-
+ <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+   integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+    crossorigin="anonymous"
+     referrerpolicy="no-referrer">
+    </script>
+    
+2-
+import plugin tabelable funiconal 
+https://datatables.net/
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+
+3-
+//Page Estiver pronta execute a table
+$(document).ready( function () {
+    $('#tabela').DataTable();
+} );
+
+4-
+//traducao para portugues da table ID table
+var table = new DataTable('#tabela', {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/pt-BR.json',
+    },
+});

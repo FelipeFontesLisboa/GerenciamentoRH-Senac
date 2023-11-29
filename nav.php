@@ -2,7 +2,8 @@
   
     <div class="container-fluid">
   
-      <a class="navbar-brand   data-bs-placement=top  " href="principal.php"><i class="bi bi-file-person-fill m-1 p-1"></i>Gerenciamento RH <h6>Bem Vindo. <?php echo $_SESSION ['usuario_admin'] ?></h6> </a>
+      <a class="navbar-brand   data-bs-placement=top  " href="principal.php"><i class="bi bi-person-vcard"></i>
+</i>Gerenciamento RH </a>
   
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,6 +27,8 @@
           </li>
         </ul>
   
+        <p><i class="bi bi-person-vcard-fill">usuario:</i>
+<?php echo $_SESSION ['usuario_admin'] ?></p>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-primary" type="submit">Buscar</button>
