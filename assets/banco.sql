@@ -1,4 +1,4 @@
-/*info sobre usuario do sistema LOGIN */
+/*info TABELA sobre usuario do sistema LOGIN */
 CREATE TABLE usuario_admin ( 
     id INT PRIMARY KEY NOT NULL  AUTO_INCREMENT,
     nome VARCHAR(45),
@@ -6,14 +6,14 @@ CREATE TABLE usuario_admin (
     senha VARCHAR(45) 
 );
 /* inserir infos*/
-INSERT INTO usuario (nome,cpf,senha)
+INSERT INTO usuario_admin (nome,cpf,senha)
 VALUES ('joaquim','09488590340','12324');
 VALUES ('paulinho','09488590310','12524');
 
 
 
 
-/* relacionada a funcao do funcionario a  profisao */
+/* TABELA relacionada a funcao do funcionario a  profisao */
 CREATE TABLE funcao_profissao ( 
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
    decricao VARCHAR(45),
@@ -25,7 +25,7 @@ VALUES ('Programador', 'junior');
 
 
 
-/* Sobre funcionario */
+/* TABELA Sobre funcionario */
 CREATE TABLE funcionario (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(45),

@@ -3,8 +3,18 @@
         .navbar-nav {
             visibility: hidden;
         }
-    } 
 
+        body{
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+        
+        }
+        .userInfoScre{
+            visibility: hidden;
+        }
+    } 
+    
     @media(max-width:991px) {   
         .menu {
             display: none;
@@ -13,14 +23,9 @@
             height: auto;
             width: auto;
         }
-    } 
-    body{
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
     
-    }
-
+    } 
+ 
  .menu {
         height: 100vh;
         background-color: #faebd7;
@@ -30,7 +35,7 @@
         padding-left: 15px;
  }
  .nav{
-    z-index: 2;
+    z-index: 1;
  }
  .item{
     display: block;

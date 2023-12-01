@@ -38,7 +38,7 @@ include 'validacao.php';
 
        <div class=" menu col-md-2 p-0 m-0  "><?php include 'menu.php' ?></div>
 
-          <div class="card col-md ">  <h3>Bem Vindo: <?php echo $_SESSION ['usuario_admin'] ?> 📃 </h3>  </div>
+          <div class="card col-md ">  <h3>Bem Vindo: <?php echo $_SESSION ['usuario_admin'] ?> </h3>  </div>
 
           <div class="card col-md  ">informaçoes</div>
 
