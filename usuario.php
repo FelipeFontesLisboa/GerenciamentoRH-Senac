@@ -10,11 +10,11 @@ $destino = "./usuario/inserir.php";
 //se for diferente de vazio, requisiçao get codigo PARA ALTERAR EDITAR
 if(!empty($_GET["codigo"])){
   $id = $_GET["codigo"];
-  $sql = "SELECT * FROM usuario WHERE id='$id'";
+  $sql = "SELECT * FROM usuario_admin WHERE id='$id'";
   $dados = mysqli_query($conect,$sql);
-  $usuarios = mysqli_fetch_array($dados);
+  $usuarios = mysqli_fetch_assoc($dados);
+  $destino = "./usuario/alterar.php";
 
-  $destino = "./usuari/alterar.php";
 }
 ?>
 
@@ -39,12 +39,12 @@ if(!empty($_GET["codigo"])){
 </head>
 
 <body>
-
+<!-- nav container -->
   <?php include 'nav.php' ?>
 
 
 
-  <div class="container-fluid p-0 m-0 ">
+  <div class="container-fluid p-0 m-0  ">
 
 
     <div class="row">
@@ -60,25 +60,25 @@ if(!empty($_GET["codigo"])){
 
           <div class="mb-3">
             <label for="Email">ID:</label>
-            <input name="id" type="text" class="form-control" aria-describedby="emailHelp" required
-              placeholder="Insira o ID" disabled />
+            <input name="id" value="<?php echo isset($usuarios) ? $usuarios["id"] : "" ?>" type="text" class="form-control" aria-describedby="emailHelp" required
+              placeholder="Insira o ID"/>
           </div>
 
           <div class="mb-3">
             <label for="Email">NOME:</label>
-            <input name="nome" type="text" class="form-control" aria-describedby="emailHelp" required
+            <input name="nome" value="<?php echo isset($usuarios) ? $usuarios["nome"] : "" ?>" type="text" class="form-control" aria-describedby="emailHelp" required
               placeholder="Insira o NOME" />
           </div>
 
           <div class="mb-3">
             <label for="Email">CPF:</label>
-            <input name="cpf" type="text" class="form-control" aria-describedby="emailHelp" required
+            <input name="cpf" value="<?php echo isset($usuarios) ? $usuarios["cpf"] : "" ?>"  type="text" class="form-control" aria-describedby="emailHelp" required
               placeholder="Insira o CPF" />
           </div>
 
           <div class="form-group">
             <label for="Password">SENHA:</label>
-            <input name="senha" type="password" class="form-control" required placeholder="Senha" />
+            <input name="senha" value="<?php echo isset($usuarios) ? $usuarios["senha"] : "" ?>" type="password" class="form-control" required placeholder="Senha" />
             <small id="emailHelp" class="form-text text-muted">Os Dados Serão Criptografados junto ao banco de dados.</small>
           </div>
 

@@ -2,8 +2,7 @@
   
     <div class="container-fluid">
   
-      <a class="navbar-brand  data-bs-placement=top  " href="principal.php"><i class="bi bi-person-vcard"></i>
-</i>Gerenciamento RH </a>
+      <a class="navbar-brand  data-bs-placement=top" href="principal.php">  <i class="bi bi-person-vcard"></i> Gerenciamento RH </a>
   
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

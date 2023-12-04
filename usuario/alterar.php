@@ -4,7 +4,7 @@ include "../conect.php";
 //EDITAR se existir um id
 if (isset($_REQUEST["id"])) {
     $id = $_REQUEST["id"];
-    $nome = $_REQUEST["home"];
+    $nome = $_REQUEST["nome"];
     $cpf = $_REQUEST["cpf"];
     $senha = $_REQUEST["senha"];
 
