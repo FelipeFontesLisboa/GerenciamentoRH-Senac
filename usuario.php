@@ -31,9 +31,14 @@ if(!empty($_GET["codigo"])){
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
+<!-- jQuery tabela INTELIGENTE -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+  <!-- galery alerta notieJS -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+
 
   <title>Usuario</title>
 </head>
@@ -60,7 +65,7 @@ if(!empty($_GET["codigo"])){
 
           <div class="mb-3">
             <label for="Email">ID:</label>
-            <input name="id" value="<?php echo isset($usuarios) ? $usuarios["id"] : "" ?>" type="text" class="form-control" aria-describedby="emailHelp" required
+            <input name="id" value="<?php echo isset($usuarios) ? $usuarios["id"] : "" ?>" type="text" class="form-control" aria-describedby="emailHelp" 
               placeholder="Insira o ID"/>
           </div>
 
@@ -78,11 +83,11 @@ if(!empty($_GET["codigo"])){
 
           <div class="form-group">
             <label for="Password">SENHA:</label>
-            <input name="senha" value="<?php echo isset($usuarios) ? $usuarios["senha"] : "" ?>" type="password" class="form-control" required placeholder="Senha" />
+            <input name="senha" value="<?php echo isset($usuarios) ? $usuarios["senha"] : "" ?>" type="password" class="form-control"  placeholder="Senha" required />
             <small id="emailHelp" class="form-text text-muted">Os Dados Serão Criptografados junto ao banco de dados.</small>
           </div>
 
-          <button type="submit" class="btn btn-primary m-1"> <i class="bi bi-person-fill-add"></i> Cadastrar</button>
+          <button type="submit" class="btn btn-primary m-1"> <i class="bi bi-person-fill-add"></i> Cadastrar/Editar</button>
           <button type="reset" class="btn btn-primary">Limpar</button>
 
         </form>
@@ -120,8 +125,8 @@ if(!empty($_GET["codigo"])){
                 <td>
                   <?php echo $linha['cpf'] ?>
                 </td>
-                <td> <a href="usuario.php?codigo=<?=$linha['id'] ?>">  <i class="bi bi-wrench"></i>  </a></td>
-                <td><a  href="<?php echo "./usuario/excluir.php?id=".$linha['id'] ?>"> <i class="bi bi-trash"></i> </a></td>
+                <td> <a title="Editar" href="usuario.php?codigo=<?=$linha['id'] ?>">  <i class="bi bi-wrench"></i>  </a></td>
+                <td><a  title="Excluir" href="<?php echo "./usuario/excluir.php?id=".$linha['id'] ?>"> <i class="bi bi-trash"></i> </a></td>
               </tr>
             <?php } ?>
 
@@ -148,8 +153,24 @@ if(!empty($_GET["codigo"])){
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
-
   <script src="./script.js"></script>
+  <script src="https://unpkg.com/notie"></script> 
+
+  <?php
+  if(isset($_SESSION['mensagem'])){
+    echo "<script>
+         notie.alert({
+          type: ".$_SESSION['tipo'].",
+          text: '".$_SESSION['mensagem']."',
+         });
+    </script>";
+
+    unset($_SESSION['mensagem']);
+    unset($_SESSION['tipo']);
+
+  }
+  ?>
+  
 </body>
 
 </html>

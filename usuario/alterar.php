@@ -12,8 +12,16 @@ if (isset($_REQUEST["id"])) {
     $sql = "UPDATE usuario_admin SET nome='$nome',cpf='$cpf',senha='$senha' WHERE id='$id' ";
     
     mysqli_query($conect, $sql);
+
+    session_start();
+    $_SESSION['mensagem'] = "Editado com sucesso";
+    //1 sucesso
+    //2 erro
+    $_SESSION['tipo'] = 4;
     header("Location:../usuario.php");
+    
+    
 }else{
-    header("Location:../usuario.php");
+header("Location:../usuario.php");
 }
 ?>

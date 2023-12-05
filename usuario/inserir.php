@@ -12,7 +12,16 @@
    //executa sql
    $resultado = mysqli_query($conect, $sql);
 
+
+   //alert notie
    //manda para Location , pagina de usuario
+   session_start();
+   $_SESSION['mensagem'] = "Cadastrado com sucesso";
+   //1 sucesso
+   //2 erro
+   $_SESSION['tipo'] = 1;
    header("Location:../usuario.php");
+
+
 
 ?>

@@ -7,6 +7,17 @@ $sql = "DELETE FROM usuario_admin WHERE id='$id'";
 
 $resultado = mysqli_query($conect,$sql);
 
+
+
+session_start();
+$_SESSION['mensagem'] = "Usuario Excluido";
+//1 sucesso
+//2 waning
+//3 erro
+//4 information
+$_SESSION['tipo'] = 3;
 header("Location:../usuario.php");
+
+
 
 ?>
