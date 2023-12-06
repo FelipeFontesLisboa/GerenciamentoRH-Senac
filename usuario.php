@@ -1,3 +1,9 @@
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+  integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+
 <?php
 //conexao com banco
 include 'conect.php';
@@ -8,12 +14,22 @@ include 'validacao.php';
 $destino = "./usuario/inserir.php";
 
 //se for diferente de vazio, requisiçao get codigo PARA ALTERAR EDITAR
-if(!empty($_GET["codigo"])){
+if (!empty($_GET["codigo"])) {
   $id = $_GET["codigo"];
   $sql = "SELECT * FROM usuario_admin WHERE id='$id'";
-  $dados = mysqli_query($conect,$sql);
+  $dados = mysqli_query($conect, $sql);
   $usuarios = mysqli_fetch_assoc($dados);
+
   $destino = "./usuario/alterar.php";
+
+  //echo para editar no modal
+  echo '
+<script>
+$(document).ready(function(){
+  $("#exampleModal").modal("show");
+})
+</script>
+';
 
 }
 ?>
@@ -31,7 +47,7 @@ if(!empty($_GET["codigo"])){
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
-<!-- jQuery tabela INTELIGENTE -->
+  <!-- jQuery tabela INTELIGENTE -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
@@ -44,7 +60,7 @@ if(!empty($_GET["codigo"])){
 </head>
 
 <body>
-<!-- nav container -->
+  <!-- nav container -->
   <?php include 'nav.php' ?>
 
 
@@ -58,83 +74,117 @@ if(!empty($_GET["codigo"])){
         <?php include 'menu.php' ?>
       </div>
 
-      <div class="card col-md  ">
-        <h3> <i class="bi bi-person-fill-gear"></i> Cadastro</h3>
-       <!-- variavel inserir destino  -->
-        <form  action="<?=$destino;?>" method="POST" class="align-items-sm-center">
 
-          <div class="mb-3">
-            <label for="Email">ID:</label>
-            <input name="id" value="<?php echo isset($usuarios) ? $usuarios["id"] : "" ?>" type="text" class="form-control" aria-describedby="emailHelp" 
-              placeholder="Insira o ID"/>
+      <!-- ---------------------------------------------------------------------- -->
+      <div class="card col-md">
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          data-bs-whatever="@mdo"> <i class="bi bi-person-fill-add">
+          </i>Cadastar</button>
+
+
+        <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                <a type="button" class="btn-close" href="usuario.php" aria-label="Close"></a>
+              </div>
+              <div class="modal-body">
+
+
+
+                <h3> <i class="bi bi-person-fill-gear"></i> Cadastro</h3>
+                <!-- variavel inserir destino  -->
+                <form action="<?= $destino; ?>" method="POST" class="align-items-sm-center">
+
+                  <div class="mb-3">
+                    <label for="Email">ID:</label>
+                    <input name="id" value="<?php echo isset($usuarios) ? $usuarios["id"] : "" ?>" type="text"
+                      class="form-control" aria-describedby="emailHelp" placeholder="Insira o ID" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Email">NOME:</label>
+                    <input name="nome" value="<?php echo isset($usuarios) ? $usuarios["nome"] : "" ?>" type="text"
+                      class="form-control" aria-describedby="emailHelp" required placeholder="Insira o NOME" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Email">CPF:</label>
+                    <input name="cpf" value="<?php echo isset($usuarios) ? $usuarios["cpf"] : "" ?>" type="text"
+                      class="form-control" aria-describedby="emailHelp" required placeholder="Insira o CPF" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Password">SENHA:</label>
+                    <input name="senha" value="<?php echo isset($usuarios) ? $usuarios["senha"] : "" ?>" type="password"
+                      class="form-control" placeholder="Senha" required />
+                    <small id="emailHelp" class="form-text text-muted">Os Dados Serão Criptografados junto ao banco de
+                      dados.</small>
+
+
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Confirmar</button>
+
+                    </div>
+                </form>
+              </div>
+
+
+            </div>
           </div>
-
-          <div class="mb-3">
-            <label for="Email">NOME:</label>
-            <input name="nome" value="<?php echo isset($usuarios) ? $usuarios["nome"] : "" ?>" type="text" class="form-control" aria-describedby="emailHelp" required
-              placeholder="Insira o NOME" />
-          </div>
-
-          <div class="mb-3">
-            <label for="Email">CPF:</label>
-            <input name="cpf" value="<?php echo isset($usuarios) ? $usuarios["cpf"] : "" ?>"  type="text" class="form-control" aria-describedby="emailHelp" required
-              placeholder="Insira o CPF" />
-          </div>
-
-          <div class="form-group">
-            <label for="Password">SENHA:</label>
-            <input name="senha" value="<?php echo isset($usuarios) ? $usuarios["senha"] : "" ?>" type="password" class="form-control"  placeholder="Senha" required />
-            <small id="emailHelp" class="form-text text-muted">Os Dados Serão Criptografados junto ao banco de dados.</small>
-          </div>
-
-          <button type="submit" class="btn btn-primary m-1"> <i class="bi bi-person-fill-add"></i> Cadastrar/Editar</button>
-          <button type="reset" class="btn btn-primary">Limpar</button>
-
-        </form>
+        </div>
       </div>
+      
+      <h3><i class="bi bi-card-checklist"></i> Listagem</h3>
 
-      <div class="card col-md  ">
-        <h3><i class="bi bi-card-checklist"></i> Listagem</h3>
-
-        <table id="tabela" class="table table-striped table-hover table-bordered">
-          <thead class="table-light">
+      <table id="tabela" class="table table-striped table-hover table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOME</th>
+            <th scope="col">CPF</th>
+            <th scope="col">EDITAR</th>
+            <th scope="col">EXCLUIR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- selecione todos o usuarios do banco SQL -->
+          <?php
+          $sql = "SELECT * FROM usuario_admin";
+          //  depois execute esse comando
+          $dados = mysqli_query($conect, $sql);
+          //linha vai valer varios registros, que vao ser percorridos
+          while ($linha = mysqli_fetch_assoc($dados)) {
+            ?>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">NOME</th>
-              <th scope="col">CPF</th>
-              <th scope="col">EDITAR</th>
-              <th scope="col">EXCLUIR</th>
+              <th scope="row">
+                <?php echo $linha['id'] ?>
+              </th>
+              <td>
+                <?php echo $linha['nome'] ?>
+              </td>
+              <td>
+                <?php echo $linha['cpf'] ?>
+              </td>
+              <td> <a title="Editar" href="usuario.php?codigo=<?= $linha['id'] ?>"> <i class="bi bi-wrench"></i> </a></td>
+              <td><a title="Excluir" href="<?php echo "./usuario/excluir.php?id=" . $linha['id'] ?>"> <i
+                    class="bi bi-trash"></i> </a></td>
             </tr>
-          </thead>
-          <tbody>
-            <!-- selecione todos o usuarios do banco SQL -->
-            <?php
-            $sql = "SELECT * FROM usuario_admin";
-            //  depois execute esse comando
-            $dados = mysqli_query($conect, $sql);
-            //linha vai valer varios registros, que vao ser percorridos
-            while ($linha = mysqli_fetch_assoc($dados)) {
-              ?>
-              <tr>
-                <th scope="row">
-                  <?php echo $linha['id'] ?>
-                </th>
-                <td>
-                  <?php echo $linha['nome'] ?>
-                </td>
-                <td>
-                  <?php echo $linha['cpf'] ?>
-                </td>
-                <td> <a title="Editar" href="usuario.php?codigo=<?=$linha['id'] ?>">  <i class="bi bi-wrench"></i>  </a></td>
-                <td><a  title="Excluir" href="<?php echo "./usuario/excluir.php?id=".$linha['id'] ?>"> <i class="bi bi-trash"></i> </a></td>
-              </tr>
-            <?php } ?>
+          <?php
 
-          </tbody>
-        </table>
-      </div>
 
+
+
+          } ?>
+
+        </tbody>
+      </table>
     </div>
+
+  </div>
 
   </div>
 
@@ -154,14 +204,14 @@ if(!empty($_GET["codigo"])){
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
   <script src="./script.js"></script>
-  <script src="https://unpkg.com/notie"></script> 
+  <script src="https://unpkg.com/notie"></script>
 
   <?php
-  if(isset($_SESSION['mensagem'])){
+  if (isset($_SESSION['mensagem'])) {
     echo "<script>
          notie.alert({
-          type: ".$_SESSION['tipo'].",
-          text: '".$_SESSION['mensagem']."',
+          type: " . $_SESSION['tipo'] . ",
+          text: '" . $_SESSION['mensagem'] . "',
          });
     </script>";
 
@@ -170,7 +220,7 @@ if(!empty($_GET["codigo"])){
 
   }
   ?>
-  
+
 </body>
 
 </html>
