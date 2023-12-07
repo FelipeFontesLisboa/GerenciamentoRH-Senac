@@ -24,4 +24,5 @@ if (isset($_REQUEST["id"])) {
 }else{
 header("Location:../usuario.php");
 }
+
 ?>

@@ -78,9 +78,11 @@ $(document).ready(function(){
       <!-- ---------------------------------------------------------------------- -->
       <div class="card col-md">
 
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          data-bs-whatever="@mdo"> <i class="bi bi-person-fill-add">
-          </i>Cadastar</button>
+         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+             data-bs-whatever="@mdo"> <i class="bi bi-person-fill-add">
+             </i>Cadastar</button>
+         </div>
 
 
         <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1"
@@ -146,8 +148,9 @@ $(document).ready(function(){
             <th scope="col">ID</th>
             <th scope="col">NOME</th>
             <th scope="col">CPF</th>
-            <th scope="col">EDITAR</th>
-            <th scope="col">EXCLUIR</th>
+            <th scope="col">OPÇÕES</th>
+            <!-- <th scope="col">EDITAR</th> -->
+            <!-- <th scope="col">EXCLUIR</th> -->
           </tr>
         </thead>
         <tbody>
@@ -169,9 +172,9 @@ $(document).ready(function(){
               <td>
                 <?php echo $linha['cpf'] ?>
               </td>
-              <td> <a title="Editar" href="usuario.php?codigo=<?= $linha['id'] ?>"> <i class="bi bi-wrench"></i> </a></td>
-              <td><a title="Excluir" href="<?php echo "./usuario/excluir.php?id=" . $linha['id'] ?>"> <i
-                    class="bi bi-trash"></i> </a></td>
+              <td> <a class="m-3" title="Editar" href="usuario.php?codigo=<?= $linha['id'] ?>"><i class="bi bi-wrench"></i></a> 
+
+               <a title="Excluir" href="<?php echo "./usuario/excluir.php?id=" . $linha['id'] ?>"><i class="bi bi-trash"> </i> </a> </td>
             </tr>
           <?php
 

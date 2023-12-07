@@ -15,7 +15,7 @@ $_SESSION['mensagem'] = "Usuario Excluido";
 //2 waning
 //3 erro
 //4 information
-$_SESSION['tipo'] = 3;
+$_SESSION['tipo'] = 4;
 header("Location:../usuario.php");
 
 
