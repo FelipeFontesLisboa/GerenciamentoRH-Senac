@@ -7,9 +7,10 @@
    $data_nascimento = $_REQUEST["data_nascimento"];
    $cpf = $_REQUEST["cpf"];
    $funcao_profissao = $_REQUEST["funcao_profissao"];
+   
 
    //inserir novo usuario
-   $sql = "INSERT INTO funcionario (nome, salario, data_nascimento, cpf, funcao_profissao) VALUES ('$nome','$salario','$data_nascimento', '$cpf', '$funcao_profissao')";
+   $sql = "INSERT INTO funcionario (nome, salario, data_nascimento, cpf, funcao_profissao) VALUES ('$nome','$salario','$data_nascimento','$cpf','$funcao_profissao')";
 
    //executa sql
    $resultado = mysqli_query($conect, $sql);

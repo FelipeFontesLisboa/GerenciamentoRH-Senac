@@ -10,8 +10,9 @@ if (isset($_REQUEST["id"])) {
     $cpf = $_REQUEST["cpf"];
     $funcao_profissao = $_REQUEST["funcao_profissao"];
 
+
     //alterar dados usuario
-    $sql = "UPDATE funcionario SET nome='$nome',salario='$salario',data_nascimento='$data_nascimento' WHERE id='$id' ";
+    $sql = "UPDATE funcionario SET nome='$nome',salario='$salario', data_nascimento='$data_nascimento', cpf='$cpf',funcao_profissao='$funcao_profissao'  WHERE id='$id' ";
     
     mysqli_query($conect, $sql);
 

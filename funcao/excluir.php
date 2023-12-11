@@ -10,13 +10,13 @@ $resultado = mysqli_query($conect,$sql);
 
 
 session_start();
-$_SESSION['mensagem'] = "Usuario Excluido";
+$_SESSION['mensagem'] = " Excluido";
 //1 sucesso
 //2 waning
 //3 erro
 //4 information
 $_SESSION['tipo'] = 4;
-header("Location:../usuario.php");
+header("Location:../funcao.php");
 
 
 

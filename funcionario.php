@@ -16,7 +16,7 @@ $destino = "./funcionario/inserir.php";
 //se for diferente de vazio, requisiçao get codigo PARA ALTERAR EDITAR
 if (!empty($_GET["codigo"])) {
   $id = $_GET["codigo"];
-  $sql = "SELECT * FROM usuario_admin WHERE id='$id'";
+  $sql = "SELECT * FROM funcionario WHERE id='$id'";
   $dados = mysqli_query($conect, $sql);
   $usuarios = mysqli_fetch_assoc($dados);
 
@@ -56,7 +56,7 @@ $(document).ready(function(){
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 
 
-  <title>Usuario</title>
+  <title>funcionario</title>
 </head>
 
 <body>
@@ -91,7 +91,7 @@ $(document).ready(function(){
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
-                <a type="button" class="btn-close" href="usuario.php" aria-label="Close"></a>
+                <a type="button" class="btn-close" href="funcionario.php" aria-label="Close"></a>
               </div>
               <div class="modal-body">
 
@@ -115,16 +115,36 @@ $(document).ready(function(){
 
                   <div class="mb-3">
                     <label for="Email">SALARIO:</label>
-                    <input name="salario" value="<?php echo isset($usuarios) ? $usuarios["cpf"] : "" ?>" type="text"
+                    <input name="salario" value="<?php echo isset($usuarios) ? $usuarios["salario"] : "" ?>" type="number"
                       class="form-control" aria-describedby="emailHelp" required placeholder="Insira o salario" />
                   </div>
 
                   <div class="form-group">
-                    <label for="Password">SENHA:</label>
-                    <input name="senha" value="<?php echo isset($usuarios) ? $usuarios["senha"] : "" ?>" type="password"
-                      class="form-control" placeholder="Senha" required />
-                    <small id="emailHelp" class="form-text text-muted">Os Dados Serão Criptografados junto ao banco de
-                      dados.</small>
+                    <label for="Password">DATA_NASCIMENTO</label>
+                    <input name="data_nascimento" value="<?php echo isset($usuarios) ? $usuarios["data_nascimento"] : "" ?>" type="date"
+                      class="form-control" placeholder="Insira a data de nacimento" required />
+                  
+                      <div class="mb-3">
+                        <label for="Email">CPF:</label>
+                        <input name="cpf" value="<?php echo isset($usuarios) ? $usuarios["cpf"] : "" ?>" type="text"
+                        class="form-control" aria-describedby="emailHelp" required placeholder="Insira o cpf" />
+                      </div>
+
+                      <div class="mb-3">
+                        <label>PROFISSAO</label>
+                        <select name="funcao_profissao" class="form-control">
+                          <option>Selecione</option>
+                          <?php
+                          $sql = "SELECT * FROM funcao_profissao";
+                          $dados = mysqli_query($conect, $sql);
+                          while($linha = mysqli_fetch_assoc($dados)){
+                            echo "<option value='".$linha['id']."'>".$linha['profissao']."</option>";
+                          }
+                          ?>
+                        </select>
+                        </div>
+
+                      <small id="emailHelp" class="form-text text-muted">Os Dados Serão Criptografados junto ao banco de
 
 
                     <div class="modal-footer">
@@ -140,14 +160,17 @@ $(document).ready(function(){
         </div>
       </div>
       
-      <h3><i class="bi bi-card-checklist"></i> Listagem</h3>
+      <h3><i class="bi bi-card-checklist"></i> Funcionarios</h3>
 
       <table id="tabela" class="table table-striped table-hover table-bordered">
         <thead class="table-light">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">NOME</th>
+            <th scope="col">SALARIO</th>
+            <th scope="col">DATA_NASCIMENTO</th>
             <th scope="col">CPF</th>
+            <th scope="col">PROFISSAO</th>
             <th scope="col">OPÇÕES</th>
             <!-- <th scope="col">EDITAR</th> -->
             <!-- <th scope="col">EXCLUIR</th> -->
@@ -170,11 +193,20 @@ $(document).ready(function(){
                 <?php echo $linha['nome'] ?>
               </td>
               <td>
+                <?php echo $linha['salario'] ?>
+              </td>
+              <td>
+                <?php echo $linha['data_nascimento'] ?>
+              </td>
+              <td>
                 <?php echo $linha['cpf'] ?>
               </td>
-              <td> <a class="m-3" title="Editar" href="usuario.php?codigo=<?= $linha['id'] ?>"><i class="bi bi-wrench"></i></a> 
+              <td>
+                <?php echo $linha['funcao_profissao'] ?>
+              </td>
+              <td> <a class="m-3" title="Editar" href="funcionario.php?codigo=<?= $linha['id'] ?>"><i class="bi bi-wrench"></i></a> 
 
-               <a title="Excluir" href="<?php echo "./usuario/excluir.php?id=" . $linha['id'] ?>"><i class="bi bi-trash"> </i> </a> </td>
+               <a title="Excluir" href="<?php echo "./funcionario/excluir.php?id=" . $linha['id'] ?>"><i class="bi bi-trash"> </i> </a> </td>
             </tr>
           <?php
 

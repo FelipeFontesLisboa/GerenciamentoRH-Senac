@@ -10,7 +10,7 @@ $resultado = mysqli_query($conect,$sql);
 
 
 session_start();
-$_SESSION['mensagem'] = "Usuario Excluido";
+$_SESSION['mensagem'] = "Funcionario Excluido";
 //1 sucesso
 //2 waning
 //3 erro

@@ -140,7 +140,7 @@ $(document).ready(function(){
         </div>
       </div>
       
-      <h3><i class="bi bi-card-checklist"></i> Listagem</h3>
+      <h3><i class="bi bi-card-checklist"></i> Função</h3>
 
       <table id="tabela" class="table table-striped table-hover table-bordered">
         <thead class="table-light">
