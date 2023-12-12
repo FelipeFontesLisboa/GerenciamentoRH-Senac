@@ -10,13 +10,13 @@
    
 
    //inserir novo usuario
-   $sql = "INSERT INTO funcionario (nome, salario, data_nascimento, cpf, funcao_profissao) VALUES ('$nome','$salario','$data_nascimento','$cpf','$funcao_profissao')";
+   $sql = "INSERT INTO funcionario (nome, salario, data_nascimento, cpf, funcao_profissao)
+    VALUES ('$nome','$salario','$data_nascimento','$cpf','$funcao_profissao')";
 
    //executa sql
    $resultado = mysqli_query($conect, $sql);
 
 
-   //alert notie
    //alert notie
    //manda para Location , pagina de usuario
    session_start();

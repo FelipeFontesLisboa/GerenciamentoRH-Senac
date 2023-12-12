@@ -209,6 +209,7 @@ $(document).ready(function(){
   <script src="./script.js"></script>
   <script src="https://unpkg.com/notie"></script>
 
+  <!-- FUNC ALERTA NOTIEJS -->
   <?php
   if (isset($_SESSION['mensagem'])) {
     echo "<script>

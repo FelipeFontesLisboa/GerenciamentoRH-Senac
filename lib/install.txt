@@ -1,0 +1,15 @@
+A biblioteca FPDF é composta pelos seguintes elementos:
+
+- o arquivo principal, fpdf.php, que contém a classe
+- os arquivos de definição de fonte localizados no diretório de fontes
+
+Os arquivos de definição de fonte são necessários assim que você deseja gerar algum texto em um documento.
+Se não estiverem acessíveis, o método SetFont() produzirá o seguinte erro:
+
+Erro FPDF: não foi possível incluir o arquivo de definição de fonte
+
+
+Observações:
+
+- Somente são necessários os arquivos correspondentes às fontes efetivamente utilizadas
+- Os tutoriais fornecidos neste pacote estão prontos para serem executados

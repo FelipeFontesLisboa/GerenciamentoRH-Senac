@@ -33,13 +33,7 @@ if(mysqli_num_rows($resultado) > 0 ){session_start(); // iniciar a sessão
     session_unset();
     session_destroy();
     header("location: login.html");
-
-
-    alert("Hello World");
-    function alert($msg) {
-        echo "<script type='text/javascript'>alert('$msg');</script>";
-    }
-    
+  
 }
 
 
