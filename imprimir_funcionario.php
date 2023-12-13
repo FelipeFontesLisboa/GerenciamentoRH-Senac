@@ -23,14 +23,14 @@ $conect = mysqli_connect($endereco, $usuario, $senha, $nome);
 	
 	
 	//endereco da empresa
-	$fpdf->setFont('arial','',12);
-	$fpdf->Cell(0,05,"RiverTur",0,1,'L');
-	$fpdf->Cell(0,05,"Endereco: RiverTur",0,1,'L');
+	$fpdf->setFont('arial','',18);
+	$fpdf->Cell(0,10,"RiverTur",1,1,'L');
+	$fpdf->Cell(0,05,converte("Endereço: RiverTur LTDA"),1,1,'L');
 	
 	//exibir data no relatorio
 	$data = date("d/m/Y H:i:s");
-	$fpdf->Cell(0,05,$data,0,1,'R');
-
+	$fpdf->Cell(0,10,$data,0,1,'R');
+	
 	//dá espaco
 	$fpdf->ln(20);
 		
@@ -92,7 +92,7 @@ $conect = mysqli_connect($endereco, $usuario, $senha, $nome);
 		
 		//configura a fonte Label.........
 		$fpdf->setFont('arial','B',12);
-		$fpdf->Cell(70,05,converte("ID da Profissao:"),0,0,'L');
+		$fpdf->Cell(70,05,converte("ID da Profissão:"),0,0,'L');
 	
     	//configura a fonte
 		$fpdf->setFont('arial','B',12);
